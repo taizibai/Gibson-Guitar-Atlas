@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Gibson 吉他品牌與經典型號互動圖鑑">
+<title>GIBSON ARCHIVE｜吉他型號圖鑑</title>
+<style>
+:root{
+  --bg:#f4f0e8;--paper:#fffdf8;--ink:#201d19;--muted:#777066;
+  --red:#9e3028;--red-dark:#74231e;--line:#ded6c9;--gold:#b28a50;
+  --shadow:0 18px 50px rgba(40,29,18,.09);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,"Noto Serif TC","Songti TC",serif}
+a{color:inherit}
+header{background:#191714;color:#f8f1e6;padding:18px 5vw;display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:3px solid var(--gold)}
+.brand{font-family:Georgia,serif;font-size:22px;letter-spacing:.18em;font-weight:bold}
+.brand small{display:block;font:10px Arial,sans-serif;letter-spacing:.28em;color:#c7b99f;margin-top:4px}
+nav{display:flex;gap:22px;font:12px Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+nav a{text-decoration:none;color:#e7dece;opacity:.85}nav a:hover{color:#d6a75f}
+.hero{min-height:410px;padding:75px 8vw 65px;display:flex;align-items:center;position:relative;overflow:hidden;background:linear-gradient(105deg,rgba(22,19,16,.94),rgba(22,19,16,.72)),radial-gradient(ellipse at 78% 45%,#875b39,#211b16 60%);color:#fff8ed}
+.hero:after{content:"G";position:absolute;right:9%;top:0;font:bold italic 340px Georgia,serif;color:rgba(255,255,255,.055);line-height:1}
+.hero-inner{max-width:720px;position:relative;z-index:1}
+.eyebrow{font:11px Arial,sans-serif;letter-spacing:.28em;color:#d4ad72;text-transform:uppercase}
+h1{font-size:clamp(42px,7vw,76px);line-height:1.02;margin:18px 0}
+.hero p{font-size:16px;line-height:1.9;color:#e4d9c9;max-width:600px}
+.hero-actions{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.btn{border:1px solid #c9a36c;padding:12px 20px;text-decoration:none;font:12px Arial,sans-serif;letter-spacing:.12em;color:#f9f0e2;background:transparent;cursor:pointer}
+.btn.primary{background:var(--red);border-color:var(--red)}
+main{max-width:1180px;margin:auto;padding:60px 5vw}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:24px}
+.kicker{font:10px Arial,sans-serif;letter-spacing:.22em;color:var(--red);text-transform:uppercase}
+h2{font-size:32px;margin:8px 0 0}
+.intro{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:start;margin-bottom:65px}
+.intro p{font-size:15px;line-height:2;color:#514b43;margin:0}
+.fact-card{background:#211e1a;color:#f6eee1;padding:26px 28px;box-shadow:var(--shadow)}
+.fact-card strong{font:10px Arial,sans-serif;letter-spacing:.2em;color:#d1a66b}
+.fact-card p{color:#e4d9c9;font-size:13px;line-height:1.8;margin:12px 0 0}
+.search-panel{background:var(--paper);padding:24px;border:1px solid var(--line);box-shadow:var(--shadow);margin:26px 0 30px}
+.search-row{display:flex;gap:12px}
+input,select{font:14px Arial,sans-serif;background:#fff;border:1px solid var(--line);padding:14px 15px;color:var(--ink);border-radius:0;outline:none}
+input:focus,select:focus{border-color:var(--red)}
+input{flex:1;min-width:0}
+select{min-width:155px}
+.search-hint{font:11px Arial,sans-serif;color:var(--muted);margin-top:12px}
+.model-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.model-card{background:var(--paper);border:1px solid var(--line);padding:22px;cursor:pointer;transition:.2s;min-height:190px;position:relative}
+.model-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#b99a70}
+.model-card .number{font:10px Arial,sans-serif;color:var(--gold);letter-spacing:.16em}
+.model-card{padding:0;overflow:hidden}.model-card .card-body{padding:18px 20px 22px}.model-photo{width:100%;height:210px;object-fit:contain;background:#f7f4ee;display:block;padding:12px}.modal-photo{width:100%;max-height:360px;object-fit:contain;background:#f7f4ee;margin:16px 0}.tone-panel{margin:24px 0;padding:20px;background:#f2ece1;border-left:3px solid var(--gold)}.tone-panel strong{display:block;font:11px Arial,sans-serif;letter-spacing:.14em;color:var(--red);margin-bottom:8px}.tone-panel p{font-size:14px;line-height:1.8;margin:0 0 14px}.yt-link{display:inline-block;background:#9e3028;color:white;text-decoration:none;padding:11px 16px;font:12px Arial,sans-serif;letter-spacing:.04em}.source-credit{font:10px Arial,sans-serif;color:var(--muted);margin-top:8px}.source-credit a{color:inherit}
+.model-card h3{font-size:22px;margin:12px 0 7px}
+.model-card p{font-size:13px;line-height:1.7;color:var(--muted);margin:0}
+.tag{display:inline-block;font:10px Arial,sans-serif;letter-spacing:.08em;color:var(--red);border:1px solid #d9b9ad;padding:5px 8px;margin-top:15px}
+.empty{display:none;padding:30px;text-align:center;color:var(--muted);background:var(--paper);border:1px dashed var(--line)}
+.modal{display:none;position:fixed;inset:0;background:rgba(15,13,11,.72);z-index:10;padding:20px;overflow:auto;align-items:center;justify-content:center}
+.modal.open{display:flex}
+.modal-box{background:var(--paper);max-width:720px;width:100%;padding:34px;position:relative;box-shadow:0 25px 90px #0006;max-height:90vh;overflow:auto}
+.close{position:absolute;right:18px;top:14px;border:0;background:none;font-size:28px;cursor:pointer;color:var(--muted)}
+.modal-kicker{font:10px Arial,sans-serif;letter-spacing:.2em;color:var(--red)}
+.modal h2{font-size:36px;margin:10px 40px 8px 0}
+.modal-sub{color:var(--muted);font:12px Arial,sans-serif;letter-spacing:.08em}
+.modal-desc{font-size:15px;line-height:1.9;color:#514b43;margin:22px 0}
+.specs{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.spec{background:#faf7f0;padding:14px}
+.spec span{display:block;font:10px Arial,sans-serif;letter-spacing:.12em;color:var(--muted);margin-bottom:7px}
+.spec strong{font-size:14px;font-weight:normal}
+.features{padding-left:19px;line-height:1.9;color:#514b43;font-size:14px}
+.note{font:11px Arial,sans-serif;line-height:1.7;color:var(--muted);border-top:1px solid var(--line);padding-top:16px;margin-top:22px}
+.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:25px}
+.time-item{border-top:2px solid var(--gold);padding-top:14px}
+.time-item strong{font-size:21px}.time-item p{font-size:12px;line-height:1.8;color:var(--muted)}
+footer{background:#191714;color:#bfb4a4;padding:28px 5vw;text-align:center;font:11px Arial,sans-serif;letter-spacing:.06em;line-height:1.8}
+@media(max-width:760px){
+ header{align-items:flex-start;flex-direction:column}nav{gap:15px;flex-wrap:wrap}
+ .hero{padding:60px 7vw;min-height:360px}.hero:after{right:-5%;font-size:240px}
+ main{padding:44px 6vw}.intro{grid-template-columns:1fr;gap:20px}
+ .model-grid{grid-template-columns:repeat(2,1fr)}.search-row{flex-direction:column}select{width:100%}
+}
+@media(max-width:480px){.model-grid{grid-template-columns:1fr}.timeline{grid-template-columns:1fr}.modal-box{padding:25px 20px}.specs{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">GIBSON ARCHIVE<small>THE GUITAR MODEL ATLAS</small></div>
+  <nav><a href="#about">品牌介紹</a><a href="#models">型號圖鑑</a><a href="#history">品牌沿革</a></nav>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Since 1894 · Nashville, Tennessee</div>
+    <h1>聲音的經典，<br>不只一種形狀。</h1>
+    <p>走進 Gibson 的吉他世界。從 Les Paul 的厚實音色、SG 的俐落線條，到 ES 系列的空心共鳴，探索每一款經典型號背後的設計與聲音特色。</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="#models">探索型號</a>
+      <a class="btn" href="#about">認識 Gibson</a>
+    </div>
+  </div>
+</section>
+
+<main>
+  <section id="about">
+    <div class="section-head"><div><div class="kicker">01 / The Brand</div><h2>關於 Gibson</h2></div></div>
+    <div class="intro">
+      <p>Gibson 是美國極具代表性的樂器品牌，由 Orville Gibson 於 19 世紀末在密西根州創立。品牌早期以曼陀林與拱面板樂器起家，後來逐步發展出電吉他與木吉他產品線。Gibson 的設計常以厚實的中頻、鮮明的外型，以及經典的木料與拾音器配置受到樂手喜愛。<br><br>無論是搖滾、藍調、爵士或民謠，Gibson 都留下許多影響深遠的聲音與設計。這份圖鑑整理常見的代表型號，讓你能快速認識它們的定位與特色。</p>
+      <aside class="fact-card"><strong>GIBSON IN BRIEF</strong><p>創辦人：Orville Gibson<br>創立年份：1894 年（品牌起源）<br>發源地：美國密西根州 Kalamazoo<br>代表產品：Les Paul、SG、ES-335、J-45、Hummingbird</p></aside>
+    </div>
+  </section>
+
+  <section id="models">
+    <div class="section-head"><div><div class="kicker">02 / Model Library</div><h2>經典型號圖鑑</h2></div><div class="kicker">點選卡片查看詳細資訊 ↗</div></div>
+    <div class="search-panel">
+      <div class="search-row">
+        <input id="searchInput" type="search" placeholder="搜尋型號，例如：Les Paul、J-45、ES-335…" aria-label="搜尋吉他型號">
+        <select id="categoryFilter" aria-label="篩選吉他類型">
+          <option value="all">全部類型</option><option value="電吉他">電吉他</option><option value="木吉他">木吉他</option>
+        </select>
+      </div>
+      <div class="search-hint">可輸入型號名稱、英文別名或關鍵字；選擇卡片即可查看簡介、規格與特色。</div>
+    </div>
+    <div class="model-grid" id="modelGrid"></div>
+    <div class="empty" id="emptyState">找不到符合條件的型號，請試試其他關鍵字。</div>
+  </section>
+
+  <section id="history" style="margin-top:70px">
+    <div class="section-head"><div><div class="kicker">03 / A Brief History</div><h2>品牌沿革</h2></div></div>
+    <div class="timeline">
+      <div class="time-item"><strong>1894</strong><p>Orville Gibson 開始製作具有拱面板設計的曼陀林與吉他，奠定品牌起點。</p></div>
+      <div class="time-item"><strong>1950s</strong><p>Les Paul、ES-335、Flying V 等重要電吉他設計陸續問世，成為現代吉他史的重要篇章。</p></div>
+      <div class="time-item"><strong>Today</strong><p>Gibson 持續推出經典系列與新款樂器，並透過不同規格滿足各類演奏需求。</p></div>
+    </div>
+  </section>
+</main>
+
+<div class="modal" id="modelModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-box">
+    <button class="close" id="closeModal" aria-label="關閉">×</button>
+    <div class="modal-kicker" id="modalCategory"></div>
+    <h2 id="modalTitle"></h2>
+    <div class="modal-sub" id="modalSubtitle"></div>
+    <img class="modal-photo" id="modalPhoto" alt="" loading="lazy">
+    <div class="source-credit" id="photoCredit"></div>
+    <p class="modal-desc" id="modalDescription"></p>
+    <div class="tone-panel"><strong>音色聽感與試聽</strong><p id="modalTone"></p><a class="yt-link" id="youtubeLink" target="_blank" rel="noopener">在 YouTube 搜尋 Gibson TV 該型號試聽 ↗</a><div class="source-credit">此連結會搜尋 Gibson TV 的該型號試聽；請確認影片頻道為 Gibson 官方帳號。</div></div>
+    <div class="specs" id="modalSpecs"></div>
+    <h3 style="font-size:18px;margin:25px 0 10px">型號特色</h3>
+    <ul class="features" id="modalFeatures"></ul>
+    <div class="note">注意：以上為該系列常見設計與概略介紹。不同年份、子型號及版本的木料、拾音器、硬體與規格可能有所差異，實際資訊請以 Gibson 官方該年份產品資料為準。</div>
+  </div>
+</div>
+
+<footer>GIBSON ARCHIVE · 非官方品牌介紹與學習用途網站<br>Gibson 為其各自權利人所有之商標。本網站非 Gibson 官方網站。</footer>
+
+<script>
+const models = [
+ {name:"Les Paul Standard",aliases:"les paul lp standard",type:"電吉他",family:"Solid Body",era:"1952 年推出",desc:"Gibson 最具代表性的實心電吉他系列之一，以單切角琴身、厚實音色與經典外觀聞名。常見配置為桃花心木琴身搭配楓木面板，並使用雙線圈拾音器。",specs:[["琴身","單切角實心琴身"],["常見木料","桃花心木／楓木面板"],["拾音器","雙線圈 Humbucker"],["琴橋","Tune-o-matic／Stopbar（常見配置）"],["音色走向","厚實中頻、延音佳"],["常見風格","搖滾、藍調、硬式搖滾"]],features:["單切角造型與厚實琴身設計。","雙線圈拾音器能提供飽滿、較低雜訊的音色。","適合需要厚實主奏音色與長延音的演奏者。"]},
+ {name:"Les Paul Custom",aliases:"les paul custom black beauty",type:"電吉他",family:"Custom Shop / Solid Body",era:"1954 年推出",desc:"Les Paul 系列中更具華麗裝飾感的高階代表，常見特色包括多層包邊、方塊指板鑲嵌與金色硬體（依版本而異）。",specs:[["琴身","單切角實心琴身"],["常見木料","依年份與版本不同"],["拾音器","常見為雙線圈"],["外觀","多層包邊、華麗鑲嵌"],["音色走向","厚實、飽滿"],["常見風格","搖滾、爵士、藍調"]],features:["外觀裝飾比 Standard 更華麗。","常見 Ebony 黑色版本，也有其他配色。","適合重視經典外型與多元音色的樂手。"]},
+ {name:"SG Standard",aliases:"sg standard solid guitar",type:"電吉他",family:"Solid Body",era:"1961 年以新造型推出",desc:"SG 以輕薄的雙缺角琴身與快速的高把位可及性著稱。相較 Les Paul，琴身通常更輕薄，外型更具侵略感。",specs:[["琴身","雙缺角實心琴身"],["常見木料","桃花心木"],["拾音器","雙線圈 Humbucker"],["琴頸接合","常見為琴頸延伸接合設計"],["音色走向","中頻突出、反應直接"],["常見風格","硬式搖滾、經典搖滾、藍調"]],features:["雙缺角設計方便高把位演奏。","薄琴身通常帶來較輕盈的手感。","音色直接有力，適合節奏與主奏演奏。"]},
+ {name:"ES-335",aliases:"es 335 semi hollow semi-hollow",type:"電吉他",family:"Semi-hollow",era:"1958 年推出",desc:"ES-335 是經典半空心電吉他，琴身內部具有中央實心木塊，兼顧空心琴身的共鳴感與較高音量下的穩定性。",specs:[["琴身","半空心、中央實心木塊"],["面板／背側板","拱形層壓木板（常見）"],["拾音器","雙線圈 Humbucker"],["琴橋","Tune-o-matic（常見）"],["音色走向","溫暖、開闊、富共鳴"],["常見風格","爵士、藍調、搖滾"]],features:["半空心結構帶來不同於實心琴的共鳴感。","中央實心木塊有助於控制回授。","適合乾淨音色，也能應付破音演奏。"]},
+ {name:"Flying V",aliases:"flying v vee",type:"電吉他",family:"Solid Body",era:"1958 年推出",desc:"以極具辨識度的 V 字形琴身聞名，是 Gibson 最具代表性的未來感設計之一。",specs:[["琴身","V 字形實心琴身"],["常見木料","桃花心木（依版本而異）"],["拾音器","常見雙線圈"],["琴橋","依版本而異"],["音色走向","有力、厚實"],["常見風格","硬式搖滾、金屬、藍調搖滾"]],features:["獨特 V 字外型，舞台辨識度高。","坐姿演奏時通常需要適應其琴身形狀。","常見於高能量的搖滾與金屬演奏。"]},
+ {name:"Explorer",aliases:"explorer",type:"電吉他",family:"Solid Body",era:"1958 年推出",desc:"Explorer 以稜角分明的不對稱琴身設計聞名，聲音與外型都具有強烈個性。",specs:[["琴身","不對稱幾何造型"],["常見木料","桃花心木（依版本而異）"],["拾音器","常見雙線圈"],["琴橋","依版本而異"],["音色走向","厚實、強勁"],["常見風格","搖滾、硬式搖滾、金屬"]],features:["辨識度極高的稜角琴身。","適合偏好強烈視覺風格的演奏者。","常見雙線圈配置，適合高增益音色。"]},
+ {name:"Les Paul Junior",aliases:"lp junior les paul jr junior",type:"電吉他",family:"Student / Solid Body",era:"1954 年推出",desc:"設計相對簡潔的 Les Paul 衍生型號，經典版本常以單顆 P-90 拾音器、平面琴身與簡約控制配置為特色。",specs:[["琴身","簡潔實心琴身"],["常見木料","桃花心木"],["拾音器","單顆 P-90（經典配置）"],["控制","簡化音量與音色控制"],["音色走向","直接、有咬勁"],["常見風格","龐克、搖滾、藍調"]],features:["單顆 P-90 帶來直接且有特色的中頻。","簡單配置，操作直覺。","適合喜歡粗獷、直接音色的演奏者。"]},
+ {name:"J-45",aliases:"j45 j 45 round shoulder acoustic",type:"木吉他",family:"Round Shoulder Dreadnought",era:"1942 年推出",desc:"Gibson 經典木吉他之一，常被稱為工作馬型號。圓肩琴身與溫暖、均衡的聲音，使它適合自彈自唱與多種音樂風格。",specs:[["琴身","圓肩 Dreadnought"],["面板","常見雲杉"],["背側板","常見桃花心木"],["琴頸","依年份與版本而異"],["音色走向","溫暖、均衡、中頻明顯"],["常見風格","民謠、流行、創作"]],features:["圓肩琴身是 J-45 的經典外觀。","音色均衡，適合刷奏與指彈。","常見於創作歌手與現場伴奏。"]},
+ {name:"Hummingbird",aliases:"humming bird hummingbird square shoulder",type:"木吉他",family:"Square Shoulder Dreadnought",era:"1960 年推出",desc:"以琴身護板上的蜂鳥圖案與方肩琴身聞名。聲音飽滿、投射力佳，常見於流行、鄉村與民謠音樂。",specs:[["琴身","方肩 Dreadnought"],["面板","常見雲杉"],["背側板","依版本而異"],["外觀","蜂鳥圖案護板"],["音色走向","飽滿、明亮、投射力佳"],["常見風格","民謠、流行、鄉村"]],features:["蜂鳥圖案護板是最鮮明的視覺特色。","方肩琴身帶來充足音量與低頻。","適合強力刷奏與舞台伴奏。"]},
+ {name:"SJ-200",aliases:"sj200 sj 200 super jumbo",type:"木吉他",family:"Super Jumbo",era:"1937 年推出",desc:"Gibson 大型 Super Jumbo 木吉他代表，擁有寬大的琴身、華麗裝飾與強大的聲音投射力。",specs:[["琴身","Super Jumbo"],["面板","常見雲杉"],["背側板","常見楓木（依版本而異）"],["外觀","華麗護板與琴橋設計"],["音色走向","寬廣、明亮、投射力強"],["常見風格","鄉村、流行、民謠"]],features:["大型琴身帶來寬廣的聲音與音量。","外觀裝飾精緻，辨識度高。","適合需要強大聲音投射的伴奏與舞台演出。"]},
+ {name:"L-00",aliases:"l00 l 00 small body blues",type:"木吉他",family:"Small Body",era:"1930 年代初期",desc:"小琴身木吉他代表之一，適合近距離演奏與錄音。音色集中、中頻清楚，常與藍調及指彈風格連結。",specs:[["琴身","小型琴身"],["面板","常見雲杉"],["背側板","依版本而異"],["音色走向","集中、清楚、中頻突出"],["手感","琴身較小，抱持感輕巧"],["常見風格","藍調、民謠、指彈"]],features:["小琴身適合身形偏好較小尺寸的演奏者。","音色集中，錄音時容易取得清晰定位。","適合藍調、指彈與輕柔伴奏。"]}
+];
+const media = {
+ "Les Paul Standard": {image:"https://cdn.pimber.ly/public/asset/export/654df2787858ff9fd0095eeb/a9f376e7/69666a6d54106524b4000200/96733b18/231550073%20%284%29.JPG.jpeg",credit:"圖片來源：Andertons 商品圖",tone:"雙線圈拾音器帶來厚實中頻、飽滿低頻與較長延音；切到琴橋拾音器並加入破音時，聲音更有咬勁，適合經典搖滾與主奏。"},
+ "Les Paul Custom": {image:"https://cdn.pimber.ly/public/asset/export/654df2787858ff9fd0095eeb/a9f376e7/69666a6d54106524b4000200/96733b18/231550073%20%284%29.JPG.jpeg",credit:"代表性 Les Paul 外型參考圖；Custom 各年份外觀有差異",tone:"整體仍是 Les Paul 的厚實、延音與中頻特色；實際音色取決於年份、拾音器與木料配置，常見版本可涵蓋溫暖爵士到高增益搖滾。"},
+ "SG Standard": {image:"https://gibsonguitaravenue.com.sg/cdn/shop/files/Mainfront-2023-03-16T155201.255.jpg?v=1745892093&width=1250",credit:"圖片來源：Gibson Guitar Avenue 商品圖",tone:"中頻突出、反應快速，低頻較俐落；雙線圈能做出有力節奏與明亮主奏，推大破音時容易呈現經典硬式搖滾的粗獷感。"},
+ "ES-335": {image:"https://images.ludimusic.com/Imagens/Catalogo/Produtos/232387/4a2645d7-c54f-4511-8fc4-90643ba8e7aa_922.jpg",credit:"圖片來源：Ludimusic 商品圖",tone:"半空心結構帶來較開闊、帶空氣感的共鳴；乾淨音色溫暖圓潤，微破音時有豐富中頻，適合爵士、藍調與復古搖滾。"},
+ "Flying V": {image:"https://muzikercdn.com/uploads/products/92/9279/main_f9a6ffab.jpg",credit:"圖片來源：Muziker 商品圖",tone:"常見雙線圈配置呈現厚實、直接的攻擊感；高增益下輪廓清楚，適合硬式搖滾與金屬，也能用較乾淨的設定演奏藍調。"},
+ "Explorer": {image:"https://sc1.musik-produktiv.com/pic-010127351xxl/gibson-70s-explorer-classic-white.jpg",credit:"圖片來源：Musik Produktiv 商品圖",tone:"厚實低中頻與強勁輸出是常見印象；適合大音量節奏、riff 與高增益主奏，實際表現仍會隨拾音器和擴大器設定改變。"},
+ "Les Paul Junior": {image:"https://cdn.long-mcquade.com/files/7102/LPJ-SCCH.jpg",credit:"圖片來源：Long & McQuade 商品圖",tone:"經典 P-90 單線圈版本有明顯中頻咬勁、較粗獷的顆粒感與靈敏動態；降低音量可得到較清爽的節奏音色，推破音則很有衝勁。"},
+ "J-45": {image:"https://gibson.jp/product-images/Acoustic/ACC7JP801/J-45Standard_front-500_500.png",credit:"圖片來源：Gibson Japan 官方產品圖",tone:"溫暖、均衡，中頻存在感清楚，低頻扎實但不過度膨脹；刷奏有厚度，指彈也能保留清晰的音符分離度。"},
+ "Hummingbird": {image:"https://www.twintown.com/cdn/shop/files/Gibson_Hummingbird_Standard_Rosewood_-_Rosewood_Burst_-_Acoustic_Guitar.png?v=1721052919",credit:"圖片來源：Twin Town Guitars 商品圖",tone:"方肩琴身常帶來寬廣音量與明亮投射，刷和弦有存在感，低頻飽滿；適合民謠、流行與強力節奏刷奏。"},
+ "SJ-200": {image:"https://www.twintown.com/cdn/shop/files/OCJB20AN_Gibson_SJ-200_2048x.png?v=1779843932",credit:"圖片來源：Twin Town Guitars 商品圖",tone:"大型 Super Jumbo 琴身帶來寬廣聲場、強投射與明亮泛音；適合需要大音量伴奏、鄉村刷奏與舞台演出的場合。"},
+ "L-00": {image:"https://musikcentralen.se/content/images/thumbs/0049744_gibson-l-00-original-ebony.png",credit:"圖片來源：Musikcentralen 商品圖",tone:"小琴身聲音集中、反應靈敏，中頻清楚且不會過度轟鳴；近距離錄音、藍調、指彈與細膩伴奏都很合適。"}
+};
+
+const grid=document.getElementById("modelGrid");
+const input=document.getElementById("searchInput");
+const filter=document.getElementById("categoryFilter");
+const empty=document.getElementById("emptyState");
+const modal=document.getElementById("modelModal");
+
+function render(){
+ const q=input.value.trim().toLowerCase(), cat=filter.value;
+ const found=models.filter(m=>(cat==="all"||m.type===cat) && (m.name+" "+m.aliases+" "+m.family+" "+m.desc).toLowerCase().includes(q));
+ grid.innerHTML="";
+ found.forEach((m)=>{
+  const card=document.createElement("article");card.className="model-card";card.tabIndex=0;card.setAttribute("role","button");card.setAttribute("aria-label","查看 "+m.name+" 詳細資訊");
+  const info=media[m.name];card.innerHTML=`<img class="model-photo" src="${info.image}" alt="Gibson ${m.name} 吉他照片" loading="lazy" onerror="this.style.display='none'"><div class="card-body"><div class="number">${m.type==="電吉他"?"ELECTRIC GUITAR":"ACOUSTIC GUITAR"} · ${String(models.indexOf(m)+1).padStart(2,"0")}</div><h3>${m.name}</h3><p>${m.desc.slice(0,66)}…</p><span class="tag">${m.family}</span></div>`;
+  card.addEventListener("click",()=>showModel(m));card.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();showModel(m)}});
+  grid.appendChild(card);
+ });
+ empty.style.display=found.length?"none":"block";
+}
+function showModel(m){
+ document.getElementById("modalCategory").textContent=m.type+" / "+m.family;
+ document.getElementById("modalTitle").textContent=m.name;
+ document.getElementById("modalSubtitle").textContent="系列起源："+m.era;
+ document.getElementById("modalDescription").textContent=m.desc;
+ const info=media[m.name];
+ const photo=document.getElementById("modalPhoto");photo.src=info.image;photo.alt="Gibson "+m.name+" 吉他照片";
+ document.getElementById("photoCredit").textContent=info.credit;
+ document.getElementById("modalTone").textContent=info.tone;
+ document.getElementById("youtubeLink").href="https://www.youtube.com/results?search_query="+encodeURIComponent("Gibson "+m.name+" tone demo Gibson TV");
+ document.getElementById("modalSpecs").innerHTML=m.specs.map(s=>`<div class="spec"><span>${s[0]}</span><strong>${s[1]}</strong></div>`).join("");
+ document.getElementById("modalFeatures").innerHTML=m.features.map(f=>`<li>${f}</li>`).join("");
+ modal.classList.add("open");document.body.style.overflow="hidden";document.getElementById("closeModal").focus();
+}
+function closeModal(){modal.classList.remove("open");document.body.style.overflow=""}
+input.addEventListener("input",render);filter.addEventListener("change",render);
+document.getElementById("closeModal").addEventListener("click",closeModal);
+modal.addEventListener("click",e=>{if(e.target===modal)closeModal()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
+render();
+</script>
+</body>
+</html>
